@@ -47,21 +47,21 @@ def flatten_matrix(matrix):
             flattened.append(item)
     return flattened
 
-def afficher_matrice_alignee_gauche(matrix):
-    largeurs_colonnes = []
+def print_left_matrix(matrix):
+    size_columns = []
     for j in range(len(matrix[0])):
-        max_largeur = 0
+        max_size = 0
         for i in range(len(matrix)):
-            max_largeur = max(max_largeur, len(str(matrix[i][j])))
-        largeurs_colonnes.append(max_largeur)
+            max_size = max(max_size, len(str(matrix[i][j])))
+        size_columns.append(max_size)
     
     for ligne in matrix:
         ligne_format = ""
         for i, element in enumerate(ligne):
-            ligne_format += f"{str(element):<{largeurs_colonnes[i]}}     "
+            ligne_format += f"{str(element):<{size_columns[i]}}     "
         print(ligne_format.strip())
 
-def afficher_message_chiffre_aligne(message):
+def print_digits_textline(message):
     for i, num in enumerate(message):
         if i < len(message) - 1:
             print(f"{num:<1}", end=" ")
@@ -82,9 +82,9 @@ def main():
     encrypted_message = flatten_matrix(encrypted_matrix)
     
     print("Key matrix:")
-    afficher_matrice_alignee_gauche(key_matrix)
+    print_left_matrix(key_matrix)
     print("\nEncrypted message:")
-    afficher_message_chiffre_aligne(encrypted_message)
+    print_digits_textline(encrypted_message)
 
 if __name__ == "__main__":
     main()
